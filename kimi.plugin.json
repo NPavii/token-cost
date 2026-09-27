@@ -1,0 +1,41 @@
+{
+  "$schema": "https://catalog.msh.team/misc/kimi.plugin.schema.json",
+  "name": "token-cost",
+  "version": "0.1.0+local.20260927-215027",
+  "description": "Считает расход токенов каждой задачи и показывает стоимость в рублях: в конце каждого ответа агент дописывает 3 строки (вход / выход / рубли)",
+  "keywords": [
+    "tokens",
+    "usage",
+    "cost",
+    "рубли",
+    "токены",
+    "стоимость"
+  ],
+  "author": "Local developer",
+  "license": "MIT",
+  "skillInstructions": "",
+  "interface": {
+    "displayName": "Token Cost",
+    "shortDescription": "Расход токенов и стоимость каждой задачи в рублях",
+    "longDescription": "В конце каждого ответа агент дописывает 3 строки: сколько токенов потрачено на вход и выход и оценка стоимости задачи в рублях. Позволяет видеть цену каждой задачи на подписке Kimi (Allegro и других). Ставки в рублях настраиваются в config.json.",
+    "developerName": "Local developer",
+    "websiteURL": "",
+    "iconUrl": "",
+    "category": "PRODUCTIVITY",
+    "defaultLocale": "en-US",
+    "locales": "./locales/",
+    "tryPrompts": [
+      "Сколько стоила эта задача в рублях?",
+      "Покажи расход токенов текущей сессии",
+      "Сколько токенов потратила последняя задача?"
+    ],
+    "skillOverrides": {
+      "token-cost": {
+        "displayName": "Token Cost",
+        "description": "Расход токенов и стоимость каждой задачи в рублях"
+      }
+    }
+  },
+  "skills": "./skills/",
+  "systemPromptPath": "./system-prompt.md"
+}

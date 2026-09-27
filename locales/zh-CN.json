@@ -1,0 +1,17 @@
+{
+  "displayName": "Token Cost",
+  "shortDescription": "每个任务的 token 消耗与卢布成本",
+  "longDescription": "在每次回答的末尾自动追加 3 行：本次任务的输入/输出 token 数量以及卢布成本估算。可查看 Kimi 订阅（Allegro 等）下每个任务的实际花费，费率可在 config.json 中调整。",
+  "developerName": "Local developer",
+  "tryPrompts": [
+    "这个任务花了多少卢布？",
+    "显示当前会话的 token 消耗",
+    "上一个任务消耗了多少 token？"
+  ],
+  "skillOverrides": {
+    "token-cost": {
+      "displayName": "Token Cost",
+      "description": "统计每个任务的 token 消耗并折算为卢布成本"
+    }
+  }
+}
