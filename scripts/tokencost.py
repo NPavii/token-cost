@@ -116,6 +116,7 @@ def sum_usage(path, offset):
     totals = {"inputOther": 0, "output": 0, "inputCacheRead": 0, "inputCacheCreation": 0}
     first_time = None
     last_time = None
+    prev_block = None
     try:
         # бинарный режим: f.tell() после seek/чтения надёжен,
         # при текстовом чтении с errors="ignore" tell() врёт
@@ -133,6 +134,11 @@ def sum_usage(path, offset):
                         block = json.loads("{" + match.group(1) + "}")
                     except ValueError:
                         continue
+                    # wire.jsonl пишет usage дважды на вызов (две записи
+                    # с идентичным блоком) — дубликат пропускаем
+                    if block == prev_block:
+                        continue
+                    prev_block = block
                     for key in totals:
                         totals[key] += block.get(key, 0)
                 time_match = TIME_RE.search(line)
