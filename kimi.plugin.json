@@ -1,7 +1,7 @@
 {
   "$schema": "https://catalog.msh.team/misc/kimi.plugin.schema.json",
   "name": "token-cost",
-  "version": "0.1.0+local.20260927-223956",
+  "version": "0.1.1+local.20260928-123100",
   "description": "Считает расход токенов каждой задачи и показывает стоимость в рублях: в конце каждого ответа агент дописывает 3 строки (вход / выход / рубли)",
   "keywords": [
     "tokens",

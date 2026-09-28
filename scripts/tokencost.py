@@ -228,8 +228,22 @@ def append_log(log_path, task, tokens_in, tokens_out, rubles, duration):
         format_rubles(rubles),
         duration,
     )
-    with open(log_path, "a", encoding="utf-8") as f:
-        f.write(row)
+    # вставляем строку ПЕРЕД блоком «Итого», а не в конец файла:
+    # иначе refresh_totals() обрежет её по маркеру и запись потеряется
+    if os.path.exists(log_path):
+        with open(log_path, encoding="utf-8") as f:
+            content = f.read()
+    else:
+        content = LOG_HEADER
+    marker_at = content.find("\n" + TOTALS_MARKER)
+    if marker_at != -1:
+        new_content = content[:marker_at].rstrip("\n") + "\n" + row + content[marker_at:]
+    else:
+        if not content.endswith("\n"):
+            content += "\n"
+        new_content = content + row
+    with open(log_path, "w", encoding="utf-8") as f:
+        f.write(new_content)
     refresh_totals(log_path)
 
 
